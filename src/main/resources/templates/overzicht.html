@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" th:href="@{/css/overzichtStyle.css}" />
+
+<title>Bibliotheek</title>
+</head>
+<body>
+	<div id="biebWrapper">
+		<nav>
+			<div id="navbar">
+				<div id="navbarLinks">
+					<h1>Bibliotheek</h1>
+				</div>
+				<div id="navbarRechts">
+
+					<form th:fragment="logout" th:action="@{/logout}" method="post">
+						<input id="rechtsKnop" type="submit" value="Profile" /> <input
+							id="rechtsKnop" type="submit" value="Logout" />
+					</form>
+				</div>
+			</div>
+		</nav>
+		<div id="overzichtContainer">
+			<div id="overzichtWrapper">
+				<h3>Boeken overzicht</h3>
+				<div id="boekWrapper">
+
+					<div id="boek" th:each="boek: ${boekList}">
+						<div id="boekContainer">
+							<div id="imgPart">
+								<img id="boekImg" th:alt="${boek.naam}" th:src="${boek.img}">
+							</div>
+							<p th:text="${boek.naam}"></p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
