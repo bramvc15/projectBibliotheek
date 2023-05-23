@@ -14,12 +14,15 @@
 					<h1>Bibliotheek</h1>
 				</div>
 				<div id="navbarRechts">
-
+					<ul>
+						<a id="rechtsKnop" th:href= "@{/toevoegenBoek}">Toevoegen boek</a>
+						<a id="rechtsKnop" th:href= "@{/toevoegenBoek}">profiel</a>
+					</ul>
 					<form th:fragment="logout" th:action="@{/logout}" method="post">
-						<input id="rechtsKnop" type="submit" value="Profile" /> <input
-							id="rechtsKnop" type="submit" value="Logout" />
+						<input id="rechtsKnop" type="submit" value="Logout" />
 					</form>
 				</div>
+
 			</div>
 		</nav>
 		<div id="overzichtContainer">
@@ -28,12 +31,14 @@
 				<div id="boekWrapper">
 
 					<div id="boek" th:each="boek: ${boekList}">
-						<div id="boekContainer">
-							<div id="imgPart">
-								<img id="boekImg" th:alt="${boek.naam}" th:src="${boek.img}">
+						<a th:href="@{/boekdetail}">
+							<div id="boekContainer">
+								<div id="imgPart">
+									<img id="boekImg" th:alt="${boek.naam}" th:src="${boek.img}">
+								</div>
+								<p th:text="${boek.naam}"></p>
 							</div>
-							<p th:text="${boek.naam}"></p>
-						</div>
+						</a>
 					</div>
 				</div>
 			</div>

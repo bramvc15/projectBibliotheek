@@ -17,16 +17,31 @@ h1 {
 	color: #FFFFFF;
 }
 
-#rechtsKnop {
-	padding: 8px 16px;
-	background: none;
-	border: none;
-	color: #ffffff;
-	cursor: pointer;
+ul {
+	display:flex;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+#navbarRechts {
+  display: flex;
+  align-items: center;
+  margin-right: 2rem;
 }
 
+#rechtsKnop {
+  padding: 8px 16px;
+  background: none;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  margin-left: 10px;
+}
+#rechtsKnop a{
+	text-decoration: none;
+}
 #rechtsKnop:hover {
-	color: #C8B6A6;
+  color: #C8B6A6;
 }
 
 #navbarRechts {
@@ -52,8 +67,13 @@ h1 {
 body {
 	margin: 0;
 	font-family: Arial, sans-serif;
-	color: brown;
+	
 }
+#overzichtContainer a{
+	color:brown;
+	text-decoration: none;
+}
+
 
 #overzichtWrapper {
 	padding: 0 10rem 0 10rem;
@@ -63,12 +83,14 @@ body {
 
 #overzichtWrapper {
 	background-color: beige;
+	color: brown;
 }
 
 #boekWrapper {
 	display: flex;
 	flex-wrap: wrap;
 }
+
 
 #boekContainer {
 	background-color: beige;
@@ -83,7 +105,7 @@ body {
 
 #boekImg {
 	max-width: 100%;
-  	max-height: 100%;
+	max-height: 100%;
 }
 
 #imgPart {
@@ -92,9 +114,12 @@ body {
 	background-color: lightgray;
 	margin-bottom: 10px;
 }
+
 #boekContainer p {
-  margin: 0;
+	margin: 0;
 }
+
+/*responsive*/
 @media screen and (max-width: 768px) {
 	#boek {
 		flex: 0 0 calc(33.333% - 20px);

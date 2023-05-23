@@ -26,6 +26,10 @@ public class BibController {
 		model.addAttribute("boekList", boekRepository.findAll());
 		return "overzicht";
 	}
+	@GetMapping(value="/toevoegenBoek")
+	public String toevoegenBoek(Model model) {
+		return "toevoegenBoek";
+	}
 	
 	
 }
