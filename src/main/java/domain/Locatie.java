@@ -13,19 +13,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity
-@Table(name = "locaties")
+
 @Getter
 @Setter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Locatie implements Serializable{
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+
 	private String plaatscode1;
 	private String plaatscode2;
 	private String plaatsnaam;

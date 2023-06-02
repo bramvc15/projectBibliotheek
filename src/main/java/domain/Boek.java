@@ -5,10 +5,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -36,15 +39,17 @@ public class Boek implements Serializable {
 	private String naam;
 	private String auteurNaam;
 	private String ISBNnr;
-	private double Aankoopprijs;
+	private double aankoopprijs;
 	private int sterren;
-	private List<Locatie> locatie;
 	private String img;
-	public Boek(String naam, String auteurNaam, String ISBNnr, double Aankoopprijs, int sterren, List<Locatie> locatie, String img) {
+	@ElementCollection
+	private List<Locatie> locatie;
+	public Boek(String naam, String auteurNaam, String ISBNnr, double aankoopprijs, int sterren, List<Locatie> locatie, String img) {
 		this.naam = naam;
 		this.auteurNaam = auteurNaam;
 		this.ISBNnr = ISBNnr;
-		this.Aankoopprijs = Aankoopprijs;
+		this.aankoopprijs = Math.round(aankoopprijs * 100.0) / 100.0;;
+		this.locatie = locatie;
 		this.sterren = sterren;
 		this.img = img;
 	}

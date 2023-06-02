@@ -2,41 +2,41 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" th:href="@{/css/navbarStyle.css}" />
 <link rel="stylesheet" th:href="@{/css/overzichtStyle.css}" />
+<script src="https://kit.fontawesome.com/yourcode.js"
+	crossorigin="anonymous"></script>
 
 <title>Bibliotheek</title>
 </head>
 <body>
 	<div id="biebWrapper">
-		<nav>
-			<div id="navbar">
-				<div id="navbarLinks">
-					<h1>Bibliotheek</h1>
-				</div>
-				<div id="navbarRechts">
-					<ul>
-						<a id="rechtsKnop" th:href= "@{/toevoegenBoek}">Toevoegen boek</a>
-						<a id="rechtsKnop" th:href= "@{/toevoegenBoek}">profiel</a>
-					</ul>
-					<form th:fragment="logout" th:action="@{/logout}" method="post">
-						<input id="rechtsKnop" type="submit" value="Logout" />
-					</form>
-				</div>
-
-			</div>
-		</nav>
+		<div th:insert="~{utils :: navbar}"></div>
 		<div id="overzichtContainer">
 			<div id="overzichtWrapper">
-				<h3>Boeken overzicht</h3>
+				<div id="buttonTitle">
+					<div id="titleLinks">
+						<h3>Boeken overzicht</h3>
+					</div>
+					<div id="buttonRechts">
+						<th:block
+							th:if="${#authorization.expression('hasRole(''ADMIN'')')}">
+							<a id="rechtsKnop" th:href="@{/toevoegenBoek}"> Toevoegen
+								boek</a>
+						</th:block>
+					</div>
+				</div>
 				<div id="boekWrapper">
 
 					<div id="boek" th:each="boek: ${boekList}">
-						<a th:href="@{/boekdetail}">
+						<a th:href="|/boekdetail/${boek.id}|">
 							<div id="boekContainer">
 								<div id="imgPart">
 									<img id="boekImg" th:alt="${boek.naam}" th:src="${boek.img}">
 								</div>
 								<p th:text="${boek.naam}"></p>
+								<br>
+								<p id="auteurnaam" th:text="${boek.auteurNaam}"></p>
 							</div>
 						</a>
 					</div>

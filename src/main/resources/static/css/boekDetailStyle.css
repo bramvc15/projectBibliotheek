@@ -1,0 +1,57 @@
+/*css detail page*/
+body{
+	margin:0;
+}
+#detailContainer {
+	margin-top:2rem;
+	padding: 0 9% 0 9%;
+}
+#titleEnButton{
+	display:flex;
+}
+#flexButton{
+	margin-left:auto;
+}
+
+#detailWrapper {
+    background-color: #C8B6A6;
+    padding: 20px;
+}
+
+#detailWrapper h3 {
+	display: inline;
+    color: #8D7B68;
+    align-content: center;
+}
+#titleEnButton div{
+	width: 50%;
+}
+#favoriteButton{
+	text-align: right;
+}
+#boekDetail {
+    display: flex;
+    align-items: center;
+}
+
+#boekImg {
+    width: 150px;
+    height: auto;
+    margin-right: 20px;
+}
+
+#boekInfo p {
+    margin: 10px 0;
+}
+
+#favoriteButton button {
+    padding: 10px 20px;
+    background-color: #8D7B68;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+#favoriteButton button:hover {
+    background-color: #A4907C;
+}

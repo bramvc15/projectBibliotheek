@@ -33,8 +33,11 @@ public class SecurityConfig {
                         requests.requestMatchers("/login**").permitAll()
                                 .requestMatchers("/css/**").permitAll()
                                 .requestMatchers("/403**").permitAll()
-                                .requestMatchers("/*")
+                                .requestMatchers("/boekdetail/**").permitAll()
+                                .requestMatchers("/*").permitAll()
+                                .requestMatchers("/toevoegenBoek")
                                 .access(new WebExpressionAuthorizationManager("hasRole('ROLE_USER')"))
+                                
                 )
                 .formLogin(form ->
                         form.defaultSuccessUrl("/home", true)

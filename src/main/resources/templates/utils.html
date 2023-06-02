@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+	<div th:fragment="navbar">
+	<nav>
+		<div id="navbar">
+			<div id="navbarLinks">
+				<h1><a th:href= "@{/home}">Bibliotheek</a></h1>
+			</div>
+			<div id="navbarRechts">
+				<ul>
+					<a id="rechtsKnop" th:href="@{/populaireKeuzes}">Best verkochte
+						boeken</a>
+				</ul>
+				<form th:fragment="logout" th:action="@{/logout}" method="post">
+					<input id="rechtsKnop" type="submit" value="Logout" />
+				</form>
+			</div>
+
+		</div>
+	</nav>
+	</div>
+
+</body>
+
+</html>

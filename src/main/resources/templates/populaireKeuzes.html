@@ -1,0 +1,33 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" th:href="@{/css/overzichtStyle.css}" />
+<link rel="stylesheet" th:href="@{/css/navbarStyle.css}" />
+
+<title>Boek Detailpagina</title>
+</head>
+<body>
+
+	<div id="overzichtContainer">
+		<div th:insert="~{utils :: navbar}"></div>
+		<div id="overzichtWrapper">
+			<h3>Best verkochte boeken</h3>
+			<div id="boekWrapper">
+
+				<div id="boek" th:each="boek: ${boekList}">
+					<a th:href="|/boekdetail/${boek.id}|">
+						<div id="boekContainer">
+							<div id="imgPart">
+								<img id="boekImg" th:alt="${boek.naam}" th:src="${boek.img}">
+							</div>
+							<p th:text="${boek.naam}"></p>
+							<br>
+							<p id="auteurnaam" th:text="${boek.auteurNaam}"></p>
+						</div>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

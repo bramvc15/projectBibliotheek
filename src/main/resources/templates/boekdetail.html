@@ -1,32 +1,42 @@
-<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Login Page</title>
+<link rel="stylesheet" th:href="@{/css/navbarStyle.css}" />
 <link rel="stylesheet" th:href="@{/css/boekDetailStyle.css}" />
+
+<title>Boek Detailpagina</title>
 </head>
-<body onload='document.loginForm.username.focus();'>
+<body>
+	<div id="biebWrapper">
+		<div th:insert="~{utils :: navbar}"></div>
+		<div id="detailContainer">
 
-	<div id="boekDetailContainer">
-		<div id="boekDetailWrapper">
-			<div id="boekFoto">
-			
-			
-			</div>
+			<div id="detailWrapper">
+				<div id="titleEnButton">
+					<div id="titleLinks">
+						<h3>Boek Detailpagina</h3>
+					</div>
+					<div id="favoriteButton">
+						<button id="flexButton" type="button">Toevoegen aan
+							favorieten</button>
+					</div>
+				</div>
+				<div id="boekDetail">
 
-			<div id="boekInformatieTable">
-				<ul>
-					<li>Naam</li>
-					<li>Auteurs</li>
-					<li>ISBN nummer</li>
-					<li>Aankoopprijs (in euro, wordt geformateerd 2 cijfers na de komma)</li>
-					<li>Aantal sterren</li>
-					<li>locatie(s)</li>
-				</ul>
+					<div id="imgPart">
+						<img id="boekImg" th:alt="${boek.naam}" th:src="${boek.img}">
+					</div>
+					<div id="boekInfo">
+						<p th:text="|Naam: ${boek.naam}|"></p>
+						<p th:text="|Naam auteur: ${boek.auteurNaam}|"></p>
+						<p th:text="|ISBN nummer: ${boek.ISBNnr}|"></p>
+						<p th:text="|Aankoopprijs: €${boek.aankoopprijs}|"></p>
+						<p th:text="|Aantal keer favoriet: ${boek.sterren}|"></p>
+					</div>
+				</div>
 
 			</div>
 		</div>
 	</div>
-
 </body>
 </html>
