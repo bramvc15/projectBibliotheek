@@ -15,7 +15,8 @@
 						boeken</a>
 				</ul>
 				<form th:fragment="logout" th:action="@{/logout}" method="post">
-					<input id="rechtsKnop" type="submit" value="Logout" />
+					<input th:if= "${#authorization.expression('hasRole(''ADMIN'')')}" id="rechtsKnop" type="submit" value="Logout (Admin)" />
+					<input th:unless= "${#authorization.expression('hasRole(''ADMIN'')')}" id="rechtsKnop" type="submit" value="Logout (User)" />
 				</form>
 			</div>
 

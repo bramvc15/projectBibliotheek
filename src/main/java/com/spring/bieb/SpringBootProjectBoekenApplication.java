@@ -10,6 +10,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import service.BibliotheekService;
 import service.BibliotheekServiceImpl;
+import validator.AddValidation;
 
 @SpringBootApplication
 @EnableJpaRepositories("repository")
@@ -26,6 +27,10 @@ public class SpringBootProjectBoekenApplication implements WebMvcConfigurer{
 		registry.addViewController("/403").setViewName("403");
 	}
 	
+	@Bean
+	AddValidation addValidation() {
+		return new AddValidation();
+	}
 	@Bean
 	BibliotheekService schoolservice() {
 		return new BibliotheekServiceImpl();

@@ -7,22 +7,61 @@
 <link rel="stylesheet" th:href="@{/css/navbarStyle.css}" />
 </head>
 <body>
+	<div th:insert="~{utils :: navbar}"></div>
 	<div id="toevoegenWrapper">
-		<div th:insert="~{utils :: navbar}"></div>
 		<h1>Add Book</h1>
+		<form th:action="@{/toevoegenBoek}" th:object="${boek}" method="post">
+			<label for="isbn">ISBN Nummer:</label>
+			<input type="text" id="isbn" th:field="*{ISBNnummer}" required><br>
+			<span th:if="${#fields.hasErrors('ISBNnummer')}" th:errorclass="error" th:errors="*{'ISBNnummer'}"></span>
+			<label for="title">Title:</label>
+			<input type="text" id="title" th:field="*{naam}" required><br>
+			<span th:if="${#fields.hasErrors('naam')}" th:errorclass="error" th:errors="*{'naam'}"></span>
 
-		<form action="/books/add" method="post">
-			<label for="title">Title:</label> <input type="text" id="title"
-				name="title" required><br> <label for="author">Author:</label>
-			<input type="text" id="author" name="author" required><br>
+			<label for="author">Auteur</label>
+			
+			<input type="text" id="author" th:field="*{auteurs[0].auteurNaam}" required><br>
+			<input type="text" id="author" th:field="*{auteurs[1].auteurNaam}"><br>
+			<input type="text" id="author" th:field="*{auteurs[2].auteurNaam}"><br>
 
-			<label for="description">Description:</label><br>
-			<textarea id="description" name="description" rows="5" required></textarea>
-			<br> <label for="cover">Cover Image:</label> <input type="file"
-				id="cover" name="cover" accept="image/*" required><br>
+			<label for="price">Prijs:</label>
+			<input type="text" id="price" th:field="*{aankoopPrijs}" required><br>
+			<span th:if="${#fields.hasErrors('aankoopPrijs')}" th:errorclass="error" th:errors="*{'aankoopPrijs'}"></span>
 
-			<input type="submit" th:action="@{/toevoegenBoek}" value="Add Book">
+			<label for="rating">Rating:</label>
+			<input type="text" id="rating" th:field="*{aantalsterren}"><br>
+			<span th:if="${#fields.hasErrors('aantalsterren')}" th:errorclass="error" th:errors="*{'aantalsterren'}"></span>
+
+			<div id="location-wrapper">
+				<p>Locatie:</p>
+				<div id="locationFieldNames">
+					<label id="nameField" for="location1_plaatscode1">Plaatscode 1:</label>
+					<label id="nameField" for="location1_plaatscode2">Plaatscode 2:</label>
+					<label id="nameField" for="location1_plaatsnaam">Plaatsnaam:</label>
+				</div>
+				<div id="locationFields">
+					<input type="text" id="location1_plaatscode1" th:field="*{locaties[0].plaatscode1}">
+					<input type="text" id="location1_plaatscode2" th:field="*{locaties[0].plaatscode2}">
+					<input type="text" id="location1_plaatsnaam" th:field="*{locaties[0].plaatsnaam}">
+				</div>
+				<div id="locationFields">
+					<input type="text" id="location2_plaatscode1" th:field="*{locaties[1].plaatscode1}">
+					<input type="text" id="location2_plaatscode2" th:field="*{locaties[1].plaatscode2}">
+					<input type="text" id="location2_plaatsnaam" th:field="*{locaties[1].plaatsnaam}">
+				</div>
+				<div id="locationFields">
+					<input type="text" id="location3_plaatscode1" th:field="*{locaties[2].plaatscode1}">
+					<input type="text" id="location3_plaatscode2" th:field="*{locaties[2].plaatscode2}">
+					<input type="text" id="location3_plaatsnaam" th:field="*{locaties[2].plaatsnaam}">
+				</div>
+			</div>
+
+			<label for="image">Cover Foto:</label>
+			<input type="text" id="image" name="image" th:field="*{img}" required><br>
+
+			<input type="submit" value="Add Book">
 		</form>
+
 	</div>
 </body>
 </html>

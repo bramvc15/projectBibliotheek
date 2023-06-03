@@ -1,49 +1,66 @@
+#locationFields {
+	display: flex;
+	flex-direction: row;
+}
+#locationFieldNames{
+	display:flex;
+	flex-direction:row;
+}
+#nameField{
+	margin-right:2.2rem;
+}
+
+#location-wrapper input[type="text"] {
+	margin-right: 10px;
+}
+
 body {
-  background-color: beige;
-  font-family: Arial, sans-serif;
-  margin: 0;
+	background-color: beige;
+	font-family: Arial, sans-serif;
+	margin: 0;
 }
 
-h1 {
-  color: brown;
+#toevoegenWrapper h1 {
+	align-items:center;
+	text-align:center;
+	color: brown;
 }
 
-form {
-  background-color: #f5f5f5;
-  border: 1px solid #ccc;
-  padding: 20px;
-  max-width: 400px;
-  margin: 0 auto;
+#toevoegenWrapper form {
+	background-color: #f5f5f5;
+	border: 1px solid #ccc;
+	padding: 20px;
+	max-width: 400px;
+	margin: 0 auto;
 }
 
-label {
-  display: block;
-  margin-bottom: 5px;
-  color: brown;
+#toevoegenWrapper label {
+	display: block;
+	margin-bottom: 5px;
+	color: brown;
 }
 
-input[type="text"],
-textarea {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-  margin-bottom: 10px;
+input[type="text"], textarea {
+	width: 100%;
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-sizing: border-box;
+	margin-bottom: 10px;
 }
 
 input[type="file"] {
-  margin-bottom: 20px;
+	margin-bottom: 20px;
 }
 
 input[type="submit"] {
-  background-color: brown;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  cursor: pointer;
+	background-color: brown;
+	color: white;
+	border: none;
+	padding: 10px 20px;
+	cursor: pointer;
 }
 
 input[type="submit"]:hover {
-  background-color: #8b4513;
+	background-color: #8b4513;
 }

@@ -15,14 +15,17 @@
 			<div id="boekWrapper">
 
 				<div id="boek" th:each="boek: ${boekList}">
-					<a th:href="|/boekdetail/${boek.id}|">
+					<a th:href="|/boekdetail/${boek.ISBNnummer}|">
 						<div id="boekContainer">
 							<div id="imgPart">
 								<img id="boekImg" th:alt="${boek.naam}" th:src="${boek.img}">
 							</div>
 							<p th:text="${boek.naam}"></p>
 							<br>
-							<p id="auteurnaam" th:text="${boek.auteurNaam}"></p>
+							
+							<div id="auteur" th:each="auteur:${boek.auteurs}">
+									<p id="auteurnaam" th:text="${auteur.auteurNaam}"></p>
+								</div>
 						</div>
 					</a>
 				</div>

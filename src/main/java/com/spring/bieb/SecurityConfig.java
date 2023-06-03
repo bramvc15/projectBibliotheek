@@ -28,17 +28,16 @@ public class SecurityConfig {
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf()
-                .and()
-                .authorizeHttpRequests(requests ->
-                        requests.requestMatchers("/login**").permitAll()
-                                .requestMatchers("/css/**").permitAll()
-                                .requestMatchers("/403**").permitAll()
-                                .requestMatchers("/boekdetail/**").permitAll()
-                                .requestMatchers("/*").permitAll()
-                                .requestMatchers("/toevoegenBoek")
-                                .access(new WebExpressionAuthorizationManager("hasRole('ROLE_USER')"))
-                                
-                )
+        .and()
+        .authorizeHttpRequests(requests ->
+                requests.requestMatchers("/login**").permitAll()
+                        .requestMatchers("/css/**").permitAll()
+                        .requestMatchers("/403**").permitAll()
+                        .requestMatchers("/boekdetail/**").permitAll()
+                        .requestMatchers("/toevoegenBoek").hasRole("ADMIN")
+                        .requestMatchers("/boek/*").hasAnyRole("ADMIN","USER")
+						.anyRequest().hasAnyRole("ADMIN", "USER")
+        )
                 .formLogin(form ->
                         form.defaultSuccessUrl("/home", true)
                                 .loginPage("/login")

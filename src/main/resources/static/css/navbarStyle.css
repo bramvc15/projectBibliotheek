@@ -12,17 +12,17 @@
 	justify-content: space-between;
 }
 
-h1 {
+nav h1 {
 	color: #FFFFFF;
 }
-a {
+nav a {
   color: white;
   text-decoration: none;
 }
 #navbar{
 	padding: 0 7% 0 7%;
 }
-ul {
+nav ul {
 	display:flex;
 	list-style-type: none;
 	margin: 0;

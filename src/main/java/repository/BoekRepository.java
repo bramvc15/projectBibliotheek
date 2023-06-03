@@ -9,5 +9,9 @@ import domain.Boek;
 
 public interface BoekRepository extends CrudRepository<Boek,Long> {
 
+	
+	List<Boek> findByAuteurs_AuteurNaam(String auteur);
+	Boek findByISBNnummer(Long ISBNnummer);
+
 
 }
