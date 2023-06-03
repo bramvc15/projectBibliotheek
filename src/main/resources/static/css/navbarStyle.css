@@ -1,3 +1,7 @@
+#logoutMetNaam{
+	display:Flex;
+	flex-direction: row;
+}
 #navbar {
 	background-color: #8D7B68;
 	padding: 10px;

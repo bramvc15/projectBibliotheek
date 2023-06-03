@@ -47,8 +47,8 @@ public class BibController {
 	@GetMapping(value = "/home")
 	public String listBoeken(Model model, Principal principal) {
 		String username = principal.getName();
-
-		model.addAttribute("username", username);
+		System.out.println(username + "------------------------------------");
+		model.addAttribute("userName", username);
 		model.addAttribute("boekList", boekRepository.findAll());
 		return "overzicht";
 	}
@@ -56,8 +56,9 @@ public class BibController {
 	
 
 	@GetMapping(value = "/boekdetail/{index}")
-	public String boekDetail(@PathVariable Long index, Model model) {
+	public String boekDetail(@PathVariable Long index, Model model, Principal principal) {
 		Optional<Boek> boekOptional = boekRepository.findById(index);
+		model.addAttribute("userName", principal.getName());
 		if (boekOptional.isPresent()) {
 			Boek boek = boekOptional.get();
 			model.addAttribute("boek", boek);
@@ -67,8 +68,8 @@ public class BibController {
 	}
 
 	@GetMapping(value = "/populaireKeuzes")
-	public String populaireBoeken(Model model) {
-
+	public String populaireBoeken(Model model, Principal principal) {
+		model.addAttribute("userName", principal.getName());
 		List<Boek> boekall = (List<Boek>) boekRepository.findAll();
 
 		List<Boek> boekfavoriet = boekall.stream()

@@ -1,67 +1,78 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
-<title>Toevoegen boek</title>
-<link rel="stylesheet" th:href="@{/css/toevoegenBoekStyle.css}" />
-<link rel="stylesheet" th:href="@{/css/navbarStyle.css}" />
+    <meta charset="UTF-8">
+    <title>Toevoegen boek</title>
+    <link rel="stylesheet" th:href="@{/css/toevoegenBoekStyle.css}" />
+    <link rel="stylesheet" th:href="@{/css/navbarStyle.css}" />
 </head>
 <body>
-	<div th:insert="~{utils :: navbar}"></div>
-	<div id="toevoegenWrapper">
-		<h1>Add Book</h1>
-		<form th:action="@{/toevoegenBoek}" th:object="${boek}" method="post">
-			<label for="isbn">ISBN Nummer:</label>
-			<input type="text" id="isbn" th:field="*{ISBNnummer}" required><br>
-			<span th:if="${#fields.hasErrors('ISBNnummer')}" th:errorclass="error" th:errors="*{'ISBNnummer'}"></span>
-			<label for="title">Title:</label>
-			<input type="text" id="title" th:field="*{naam}" required><br>
-			<span th:if="${#fields.hasErrors('naam')}" th:errorclass="error" th:errors="*{'naam'}"></span>
+    <div th:insert="~{utils :: navbar}"></div>
+    <div id="toevoegenWrapper">
+        <h1>Add Book</h1>
+        <form th:action="@{/toevoegenBoek}" th:object="${boek}" method="post">
+            <label for="isbn">ISBN Nummer:</label>
+            <input type="text" id="isbn" th:field="*{ISBNnummer}"><br>
+            <span th:if="${#fields.hasErrors('ISBNnummer')}" th:errors="*{ISBNnummer}" class="error"></span>
 
-			<label for="author">Auteur</label>
-			
-			<input type="text" id="author" th:field="*{auteurs[0].auteurNaam}" required><br>
-			<input type="text" id="author" th:field="*{auteurs[1].auteurNaam}"><br>
-			<input type="text" id="author" th:field="*{auteurs[2].auteurNaam}"><br>
+            <label for="title">Title:</label>
+            <input type="text" id="title" th:field="*{naam}"><br>
+            <span th:if="${#fields.hasErrors('naam')}" th:errors="*{naam}" class="error"></span>
 
-			<label for="price">Prijs:</label>
-			<input type="text" id="price" th:field="*{aankoopPrijs}" required><br>
-			<span th:if="${#fields.hasErrors('aankoopPrijs')}" th:errorclass="error" th:errors="*{'aankoopPrijs'}"></span>
+            <label for="author">Auteur</label>
+            <input type="text" id="author" th:field="*{auteurs[0].auteurNaam}"><br>
+            <span th:if="${#fields.hasErrors('auteurs[0].auteurNaam')}" th:errors="*{auteurs[0].auteurNaam}" class="error"></span>
+            <input type="text" id="author" th:field="*{auteurs[1].auteurNaam}"><br>
+            <input type="text" id="author" th:field="*{auteurs[2].auteurNaam}"><br>
 
-			<label for="rating">Rating:</label>
-			<input type="text" id="rating" th:field="*{aantalsterren}"><br>
-			<span th:if="${#fields.hasErrors('aantalsterren')}" th:errorclass="error" th:errors="*{'aantalsterren'}"></span>
+            <label for="price">Prijs:</label>
+            <input type="text" id="price" th:field="*{aankoopPrijs}"><br>
+            <span th:if="${#fields.hasErrors('aankoopPrijs')}" th:errors="*{aankoopPrijs}" class="error"></span>
 
-			<div id="location-wrapper">
-				<p>Locatie:</p>
-				<div id="locationFieldNames">
-					<label id="nameField" for="location1_plaatscode1">Plaatscode 1:</label>
-					<label id="nameField" for="location1_plaatscode2">Plaatscode 2:</label>
-					<label id="nameField" for="location1_plaatsnaam">Plaatsnaam:</label>
-				</div>
-				<div id="locationFields">
-					<input type="text" id="location1_plaatscode1" th:field="*{locaties[0].plaatscode1}">
-					<input type="text" id="location1_plaatscode2" th:field="*{locaties[0].plaatscode2}">
-					<input type="text" id="location1_plaatsnaam" th:field="*{locaties[0].plaatsnaam}">
-				</div>
-				<div id="locationFields">
-					<input type="text" id="location2_plaatscode1" th:field="*{locaties[1].plaatscode1}">
-					<input type="text" id="location2_plaatscode2" th:field="*{locaties[1].plaatscode2}">
-					<input type="text" id="location2_plaatsnaam" th:field="*{locaties[1].plaatsnaam}">
-				</div>
-				<div id="locationFields">
-					<input type="text" id="location3_plaatscode1" th:field="*{locaties[2].plaatscode1}">
-					<input type="text" id="location3_plaatscode2" th:field="*{locaties[2].plaatscode2}">
-					<input type="text" id="location3_plaatsnaam" th:field="*{locaties[2].plaatsnaam}">
-				</div>
-			</div>
+            <label for="rating">Rating:</label>
+            <input type="text" id="rating" th:field="*{aantalsterren}"><br>
+            <span th:if="${#fields.hasErrors('aantalsterren')}" th:errors="*{aantalsterren}" class="error"></span>
 
-			<label for="image">Cover Foto:</label>
-			<input type="text" id="image" name="image" th:field="*{img}" required><br>
+            <div id="location-wrapper">
+                <p>Locatie:</p>
+                <div id="locationFieldNames">
+                    <label id="nameField" for="location1_plaatscode1">Plaatscode 1:</label>
+                    <label id="nameField" for="location1_plaatscode2">Plaatscode 2:</label>
+                    <label id="nameField" for="location1_plaatsnaam">Plaatsnaam:</label>				
+                </div>
+                <div id="locationFields">
+                    <input type="text" id="location1_plaatscode1" th:field="*{locaties[0].plaatscode1}">
+                    <input type="text" id="location1_plaatscode2" th:field="*{locaties[0].plaatscode2}">
 
-			<input type="submit" value="Add Book">
-		</form>
+                    <input type="text" id="location1_plaatsnaam" th:field="*{locaties[0].plaatsnaam}">
+                    
+                </div>
+                <span th:if="${#fields.hasErrors('locaties[0].plaatscode1')}" th:errors="*{locaties[0].plaatscode1}" class="error"></span>
+                <span th:if="${#fields.hasErrors('locaties[0].plaatscode2')}" th:errors="*{locaties[0].plaatscode2}" class="error"></span>
+                <span th:if="${#fields.hasErrors('locaties[0].plaatsnaam')}" th:errors="*{locaties[0].plaatsnaam}" class="error"></span>
+                <div id="locationFields">
+                    <input type="text" id="location2_plaatscode1" th:field="*{locaties[1].plaatscode1}">
+                    <span th:if="${#fields.hasErrors('locaties[1].plaatscode1')}" th:errors="*{locaties[1].plaatscode1}" class="error"></span>
+                    <input type="text" id="location2_plaatscode2" th:field="*{locaties[1].plaatscode2}">
+                    <span th:if="${#fields.hasErrors('locaties[1].plaatscode2')}" th:errors="*{locaties[1].plaatscode2}" class="error"></span>
+                    <input type="text" id="location2_plaatsnaam" th:field="*{locaties[1].plaatsnaam}">
+                    <span th:if="${#fields.hasErrors('locaties[1].plaatsnaam')}" th:errors="*{locaties[1].plaatsnaam}" class="error"></span>
+                </div>
+                <div id="locationFields">
+                    <input type="text" id="location3_plaatscode1" th:field="*{locaties[2].plaatscode1}">
+                    <span th:if="${#fields.hasErrors('locaties[2].plaatscode1')}" th:errors="*{locaties[2].plaatscode1}" class="error"></span>
+                    <input type="text" id="location3_plaatscode2" th:field="*{locaties[2].plaatscode2}">
+                    <span th:if="${#fields.hasErrors('locaties[2].plaatscode2')}" th:errors="*{locaties[2].plaatscode2}" class="error"></span>
+                    <input type="text" id="location3_plaatsnaam" th:field="*{locaties[2].plaatsnaam}">
+                    <span th:if="${#fields.hasErrors('locaties[2].plaatsnaam')}" th:errors="*{locaties[2].plaatsnaam}" class="error"></span>
+                </div>
+            </div>
 
-	</div>
+            <label for="image">Cover Foto:</label>
+            <input type="text" id="image" name="image" th:field="*{img}" required><br>
+
+            <input type="submit" value="Add Book">
+        </form>
+    </div>
 </body>
 </html>
