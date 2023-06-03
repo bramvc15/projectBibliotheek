@@ -17,8 +17,26 @@
 						<h3>Boek Detailpagina</h3>
 					</div>
 					<div id="favoriteButton">
-						<button id="flexButton" type="button">Toevoegen aan
-							favorieten</button>
+						<form th:if="${isFavoriet == null}"  th:action="|/favorietenAdd/${boek.ISBNnummer}|" th:object="${isFavoriet}" method="post">
+							<input type="hidden" name="aantalFavorieten"
+								th:value="${aantalFavorieten}" /> <input type="hidden"
+								name="isFavoriet" th:value="${isFavoriet}" />
+
+							<button id="flexButton" type="submit"
+								th:if="${aantalFavorieten < 6}">
+								<span>Toevoegen aan favorieten</span>
+							</button>
+						</form>
+						<form th:if="${isFavoriet != null}" th:action="|/favorietenRemove/${boek.ISBNnummer}|" th:object="${isFavoriet}" method="post">
+							<input type="hidden" name="aantalFavorieten"
+								th:value="${aantalFavorieten}" /> <input type="hidden"
+								name="isFavoriet" th:value="${isFavoriet}" />
+
+							<button id="flexButton" type="submit"
+								th:if="${aantalFavorieten < 6}">
+								<span>Verwijderen uit favorieten</span>
+							</button>
+						</form>
 					</div>
 				</div>
 				<div id="boekDetail">
@@ -30,8 +48,9 @@
 						<p th:text="|Naam: ${boek.naam}|"></p>
 						<p>auteur(s):</p>
 						<div id="auteur" th:each="auteur:${boek.auteurs}">
-							
-							<p id="auteurnaam" th:text="|&emsp;&emsp;&emsp;&emsp;${auteur.auteurNaam}|"></p>
+
+							<p id="auteurnaam"
+								th:text="|&emsp;&emsp;&emsp;&emsp;${auteur.auteurNaam}|"></p>
 						</div>
 						<p th:text="|ISBN nummer: ${boek.ISBNnummer}|"></p>
 						<p th:text="|Aankoopprijs: €${boek.aankoopPrijs}|"></p>

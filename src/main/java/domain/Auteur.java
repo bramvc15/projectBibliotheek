@@ -14,7 +14,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@NoArgsConstructor
 public class Auteur implements Serializable {
 	/**
 	 * 
@@ -23,7 +23,7 @@ public class Auteur implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	String auteurNaam;
+	private String auteurNaam;
 	public Auteur(String auteurNaam) {
 		this.auteurNaam = auteurNaam;
 	}
